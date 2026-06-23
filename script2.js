@@ -23,12 +23,16 @@ function speelSpel(event) {
 
   // genereert de keuze van de computer
   const randomNumber = Math.floor(Math.random() * 3) + 1;
-  if (randomNumber === 1) {
-    computerChoice = 'steen';
-  } else if (randomNumber === 2) {
-    computerChoice = 'schaar';
-  } else if (randomNumber === 3) {
-    computerChoice = 'papier';
+  switch (randomNumber) {
+    case 1:
+      computerChoice = 'steen';
+      break;
+    case 2:
+      computerChoice = 'schaar';
+      break;
+    case 3:
+      computerChoice = 'papier';
+      break;
   }
   
   // Toont de keuze van de computer
