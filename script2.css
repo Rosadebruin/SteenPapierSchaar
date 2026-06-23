@@ -1,0 +1,52 @@
+body {
+  background-image: url(4DXit2.jpg);
+  background-size: cover;
+}
+
+#container {
+  color: white;
+  backdrop-filter: blur(5px);
+  padding: 30px;             
+  border-radius: 12px;    
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+  text-align: center;       
+  box-shadow: black;
+  border: 2px solid rgb(64, 104, 72);
+  text-shadow: 1px 1px black;
+}
+
+#steen {
+  background-color: rgb(103, 129, 84);
+  padding: 4px;
+  color: white;
+  text-shadow: 1px 1px black;
+  border-radius: 5px; 
+}
+#steen:hover {
+  background-color: rgb(117, 140, 99);
+  scale: 103%;
+}
+
+#papier {
+  background-color: rgb(84, 123, 129);
+  padding: 4px;
+  color: white;
+  text-shadow: 1px 1px black;
+  border-radius: 5px; 
+}
+#papier:hover {
+  background-color: rgb(98, 138, 144);
+  scale: 103%;
+}
+
+#schaar {
+  background-color: rgb(175, 183, 99);
+  padding: 4px;
+  color: white;
+  text-shadow: 1px 1px black;
+  border-radius: 5px; 
+}
+#schaar:hover {
+  background-color: rgb(184, 192, 113);
+  scale: 103%;
+}

@@ -63,7 +63,7 @@ schaarBtn.addEventListener('click', function (event) {
 
 humanOutput.innerHTML = "Jouw keuze komt hier, maak je keuze!";
 
-computerOutput.innerHTML = "cp choice";
+computerOutput.innerHTML = "De keuze van de computer komt hier!";
 
 resultOutput.innerHTML = "result";
 
