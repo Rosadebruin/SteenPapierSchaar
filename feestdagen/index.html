@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Urenregistratie Systeem</title>
+    <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+
+<body>
+
+    
+
+    <div class="container">
+        <h1>Aankomende Feestdagen in Nederland</h1>
+        <div id="loading" class="loading">Feestdagen ophalen...</div>
+        <ul id="feestdagen-lijst"></ul>
+    </div>
+
+    <script>
+        async function haalFeestdagenOp() {
+            const huidigJaar = new Date().getFullYear();
+            const url = `https://date.nager.at/api/v3/PublicHolidays/${huidigJaar}/NL`;
+
+            try {
+                const response = await fetch(url);
+                const feestdagen = await response.json();
+
+                const vandaag = new Date();
+                vandaag.setHours(0, 0, 0, 0);
+
+                const aankomendeFeestdagen = feestdagen.filter(feestdag => {
+                    const feestdagDatum = new Date(feestdag.date);
+                    return feestdagDatum >= vandaag;
+                });
+
+                ToonFeestdagen(aankomendeFeestdagen);
+            } catch (error) {
+                console.error("Fout bij het ophalen van de gegevens:", error);
+                document.getElementById('loading').innerText = "Kon de feestdagen helaas niet laden.";
+            }
+        }
+
+        function ToonFeestdagen(feestdagen) {
+            const lijst = document.getElementById('feestdagen-lijst');
+            const loadingDiv = document.getElementById('loading');
+
+            loadingDiv.style.display = 'none';
+
+            if (feestdagen.length === 0) {
+                lijst.innerHTML = '<li>Geen aankomende feestdagen meer voor dit jaar!</li>';
+                return;
+            }
+
+            feestdagen.forEach(feestdag => {
+                const li = document.createElement('li');
+
+                const opties = { day: 'numeric', month: 'long' };
+                const geformatteerdeDatum = new Date(feestdag.date).toLocaleDateString('nl-NL', opties);
+
+                li.innerHTML = `
+                    <span class="name">${feestdag.localName}<br></span>
+                    <span class="date">${geformatteerdeDatum}</span>
+                `;
+                lijst.appendChild(li);
+            });
+        }
+
+    haalFeestdagenOp();
+    </script>
+
+</body>
+
+</html>
